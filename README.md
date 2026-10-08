@@ -144,4 +144,4 @@ Please cite the original CoMBO paper when building on this work:
 }
 ```
 
-This implementation builds on [Mask2Former](https://github.com/facebookresearch/Mask2Former), [Detectron2](https://github.com/facebookresearch/detectron2), and [Deformable DETR](https://github.com/fundamentalvision/Deformable-DETR). Existing upstream copyright and license notices are preserved.
+This implementation builds on [Mask2Former](https://github.com/facebookresearch/Mask2Former), [Detectron2](https://github.com/facebookresearch/detectron2), and [Deformable DETR](https://github.com/fundamentalvision/Deformable-DETR).
