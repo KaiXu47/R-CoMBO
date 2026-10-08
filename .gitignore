@@ -1,0 +1,82 @@
+# Python caches and environments
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+.ipynb_checkpoints/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Local settings and credentials
+.idea/
+.vscode/
+.agents/
+.codex/
+.aws/
+.env
+.env.*
+!.env.example
+.DS_Store
+
+# Training and evaluation output
+output/
+outputs/
+prev_output/
+run_logs/
+logs/
+log/
+wandb/
+results/
+checkpoints/
+checkpoint/
+ckpt/
+pretrained/
+weights/
+json/
+*.log
+log.txt
+metrics.json
+last_checkpoint
+events.out.tfevents.*
+*.pth
+*.pt
+*.ckpt
+*.pkl
+*.pickle
+*.safetensors
+*.onnx
+
+# Raw datasets: retain preparation scripts and required static metadata
+/datasets/*
+!/datasets/*.py
+!/datasets/*.txt
+!/datasets/ade20k_instance_imgCatIds.json
+
+# Analysis: retain source scripts only
+/analysis/**
+!/analysis/**/
+!/analysis/**/*.py
+!/analysis/**/*.sh
+
+# Native build output
+build/
+dist/
+*.egg-info/
+*.so
+*.o
+*.a
+*.ninja
+detectron2_temp/
+
+# Generated numerical and media artifacts
+*.npy
+*.npz
+*.h5
+*.hdf5
+*.pdf
+*.zip
+*.tar
+*.tar.gz
+*.tgz

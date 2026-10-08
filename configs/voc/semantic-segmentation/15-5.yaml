@@ -1,0 +1,7 @@
+_BASE_: rcombo_R101.yaml
+CONT:
+  TOT_CLS: 21
+  BASE_CLS: 16
+  INC_CLS: 5
+  TASK: 1
+OUTPUT_DIR: ./output/ss/15-5_test/step1

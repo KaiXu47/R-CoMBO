@@ -1,0 +1,54 @@
+DATASETS:
+  TRAIN: ("current_cityscapes_sem_seg_train",)
+  TEST: ("current_cityscapes_sem_seg_val",)
+SOLVER:
+  IMS_PER_BATCH: 8
+  BASE_LR: 0.0001
+  MAX_ITER: 40000
+  WARMUP_FACTOR: 1.0
+  WARMUP_ITERS: 0
+  WEIGHT_DECAY: 0.05
+  OPTIMIZER: ADAMW
+  LR_SCHEDULER_NAME: WarmupPolyLR
+  BACKBONE_MULTIPLIER: 0.1
+  CLIP_GRADIENTS:
+    ENABLED: true
+    CLIP_TYPE: full_model
+    CLIP_VALUE: 0.01
+    NORM_TYPE: 2.0
+  AMP:
+    ENABLED: true
+INPUT:
+  MIN_SIZE_TRAIN:
+  - 512
+  - 640
+  - 768
+  - 896
+  - 1024
+  MIN_SIZE_TRAIN_SAMPLING: choice
+  MIN_SIZE_TEST: 1024
+  MAX_SIZE_TRAIN: 2048
+  MAX_SIZE_TEST: 2048
+  CROP:
+    ENABLED: true
+    TYPE: absolute
+    SIZE: (512, 1024)
+    SINGLE_CATEGORY_MAX_AREA: 1.0
+  COLOR_AUG_SSD: true
+  SIZE_DIVISIBILITY: 1024
+  FORMAT: RGB
+  DATASET_MAPPER_NAME: mask_former_semantic
+TEST:
+  EVAL_PERIOD: 5000
+  AUG:
+    ENABLED: false
+    MIN_SIZES:
+    - 768
+    - 1024
+    - 1280
+    MAX_SIZE: 2048
+    FLIP: true
+DATALOADER:
+  FILTER_EMPTY_ANNOTATIONS: true
+  NUM_WORKERS: 4
+VERSION: 2

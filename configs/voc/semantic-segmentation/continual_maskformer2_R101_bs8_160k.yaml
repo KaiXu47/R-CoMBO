@@ -1,0 +1,21 @@
+_BASE_: maskformer2_R101_bs16_160k.yaml
+INPUT:
+  DATASET_MAPPER_NAME: continual_semantic
+DATASETS:
+  TRAIN: ("current_pascal21_sem_seg_train",)
+  TEST: ("current_pascal21_sem_seg_val",)
+SOLVER:
+  IMS_PER_BATCH: 16
+  BASE_LR: 0.0001
+  CHECKPOINT_PERIOD: 5000
+CONT:
+  SETTING: overlapped
+  MED_TOKENS_WEIGHT: 3.0
+  MEMORY: false
+  RANK: 16
+  IMPORTANCE_GRAD_ROUTING: true
+  IMPORTANCE_GRAD_MIN: 0.1
+  SEMANTIC_PIXEL_CROSS_ATTENTION: true
+  DETACH_PIXEL_FEATURES: true
+TEST:
+  EVAL_PERIOD: 1000

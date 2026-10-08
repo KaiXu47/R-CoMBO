@@ -1,0 +1,7 @@
+_BASE_: rcombo_R101.yaml
+CONT:
+  TOT_CLS: 19
+  BASE_CLS: 11
+  INC_CLS: 1
+  TASK: 1
+OUTPUT_DIR: ./output/city_ss/11-1/step1

@@ -1,0 +1,95 @@
+MODEL:
+  BACKBONE:
+    FREEZE_AT: 0
+    NAME: build_resnet_backbone
+  WEIGHTS: detectron2://ImageNetPretrained/torchvision/R-50.pkl
+  PIXEL_MEAN:
+  - 123.675
+  - 116.28
+  - 103.53
+  PIXEL_STD:
+  - 58.395
+  - 57.12
+  - 57.375
+  RESNETS:
+    DEPTH: 50
+    STEM_TYPE: basic
+    STEM_OUT_CHANNELS: 64
+    STRIDE_IN_1X1: false
+    OUT_FEATURES:
+    - res2
+    - res3
+    - res4
+    - res5
+    RES5_MULTI_GRID:
+    - 1
+    - 1
+    - 1
+DATASETS:
+  TRAIN: ("ade20k_panoptic_train",)
+  TEST: ("ade20k_panoptic_val",)
+SOLVER:
+  IMS_PER_BATCH: 16
+  BASE_LR: 0.0001
+  MAX_ITER: 160000
+  WARMUP_FACTOR: 1.0
+  WARMUP_ITERS: 0
+  WEIGHT_DECAY: 0.05
+  OPTIMIZER: ADAMW
+  LR_SCHEDULER_NAME: WarmupPolyLR
+  BACKBONE_MULTIPLIER: 0.1
+  CLIP_GRADIENTS:
+    ENABLED: true
+    CLIP_TYPE: full_model
+    CLIP_VALUE: 0.01
+    NORM_TYPE: 2.0
+  AMP:
+    ENABLED: true
+INPUT:
+  MIN_SIZE_TRAIN:
+  - 320
+  - 384
+  - 448
+  - 512
+  - 576
+  - 640
+  - 704
+  - 768
+  - 832
+  - 896
+  - 960
+  - 1024
+  - 1088
+  - 1152
+  - 1216
+  - 1280
+  MIN_SIZE_TRAIN_SAMPLING: choice
+  MIN_SIZE_TEST: 640
+  MAX_SIZE_TRAIN: 2560
+  MAX_SIZE_TEST: 2560
+  CROP:
+    ENABLED: true
+    TYPE: absolute
+    SIZE: (640, 640)
+    SINGLE_CATEGORY_MAX_AREA: 1.0
+  COLOR_AUG_SSD: true
+  SIZE_DIVISIBILITY: 640
+  FORMAT: RGB
+  DATASET_MAPPER_NAME: mask_former_panoptic
+TEST:
+  EVAL_PERIOD: 5000
+  AUG:
+    ENABLED: false
+    MIN_SIZES:
+    - 320
+    - 480
+    - 640
+    - 800
+    - 960
+    - 1120
+    MAX_SIZE: 4480
+    FLIP: true
+DATALOADER:
+  FILTER_EMPTY_ANNOTATIONS: true
+  NUM_WORKERS: 4
+VERSION: 2

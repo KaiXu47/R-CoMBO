@@ -1,0 +1,21 @@
+_BASE_: maskformer2_R50_bs8_40k.yaml
+INPUT:
+  DATASET_MAPPER_NAME: continual_panoptic
+DATASETS:
+  TRAIN: ("current_cityscapes_panoptic_train",)
+  TEST: ("current_cityscapes_panoptic_val",)
+SOLVER:
+  IMS_PER_BATCH: 8
+  BASE_LR: 0.0001
+  CHECKPOINT_PERIOD: 2500
+CONT:
+  SETTING: overlapped
+  MED_TOKENS_WEIGHT: 3.0
+  MEMORY: false
+  RANK: 16
+  IMPORTANCE_GRAD_ROUTING: true
+  IMPORTANCE_GRAD_MIN: 0.1
+  SEMANTIC_PIXEL_CROSS_ATTENTION: true
+  DETACH_PIXEL_FEATURES: true
+TEST:
+  EVAL_PERIOD: 2500
